@@ -1,0 +1,64 @@
+<html>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div id="postlist">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3>{{blogPost.blogtitle}}</h3>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h4 class="pull-right">
+                                            <small>
+                                                <strong >Created By: </strong>{{blogPost.postedBy.username}}</small>
+
+                                            <small>
+                                                <strong>Created On: </strong>{{blogPost.postedOn | date:'medium'}}</span>
+                                            </small>
+
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            {{blogPost.description}}
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Approval</label>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="radio-inline" style="color:green;">
+                                            <input type="radio" ng-model="blogPost.approved"  value="true" ng-click="setValueForRejectionTxt(false)">APPROVE
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="radio-inline" style="color:red;">
+                                            <input type="radio" ng-model="blogPost.approved"  value="false" ng-click="setValueForRejectionTxt(true)">REJECT
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--   <input type="radio" ng-model="blogPost.approved" value="true" ng-click="setValueForRejectionTxt(false)">Approve
+   <br> <input type="radio" ng-model="blogPost.approved" value="false" ng-click="setValueForRejectionTxt(true)">Reject<br>-->
+                        <br>
+                       
+                        <input type="submit" class="btn btn-primary" ng-click="updateApproval()" value="Update">
+                    </div>
+
+                </div>
+</body>
+
+</html>

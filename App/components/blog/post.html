@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="post.css"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6 col-xs-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-lock"></span>CREATE POST</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" method="POST">
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="title">TITLE
+                                        <span class="require">*</span>
+                                    </label>
+
+                                    <input type="text" class="form-control" name="title" ng-model="blogPost.blogtitle">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="description">DESCRIPTION</label>
+
+                                    <textarea rows="5" class="form-control" name="description" ng-model="blogPost.description"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>
+                                    <span class="require">*</span> - required fields</p>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" ng-click="saveBlogPost()">
+                                    CREATE
+                                </button>
+
+                                <button class="btn btn-default">
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="resources/sockjs/sockjs.js"></script>
+    <script src="resources/stomp/dist/stomp.js"></script>
+
+    <!--  Angular JS ngRoute -->
+
+    <script src="resources/angular/angular.js"></script>
+    <script src="resources/angular/angular-route.min.js"></script>
+    <script src="resources/angular/angular-cookies.min.js"></script>
+    <script src="resources/jquery/jquery-3.2.1.min.js"></script>
+    <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" href="resources/css/style.css"></link>
+    <!--app file -->
+    <script src="components/js/app.js"></script>
+    <script src="components/js/config.js"></script>
+    <!--Register -->
+
+    <script src="components/register/RegisterController.js"></script>
+    <script src="components/register/RegisterService.js"></script>
+    <script src="components/register/registercontroller1.js"></script>
+    <!--Login -->
+    <script src="components/login/LoginController.js"></script>
+    <script src="components/login/LoginService.js"></script>
+    <!--Job -->
+    <script src="components/job/jobcontroller1.js"></script>
+    <script src="components/job/JobController.js"></script>
+    <script src="components/job/JobService.js"></script>
+    <!--BlogPost -->
+    <script src="components/blog/BlogPostController.js"></script>
+    <script src="components/blog/blogpostcontroller1.js"></script>
+    <script src="components/blog/blogdetailcontroller.js"></script>
+    <script src="components/blog/BlogPostService.js"></script>
+    <!--Friend-->
+    <script src="components/friend/FriendController.js"></script>
+    <script src="components/friend/FriendService.js"></script>
+    <script src="components/friend/FriendController1.js"></script>
+    <script src="components/friend/Friendservice1.js"></script>
+    <!--chat-->
+    <script src="components/chat/ChatController.js"></script>
+    <script src="components/chat/ChatService.js"></script>
+    <!--home -->
+    <script src="/components/home/homecontroller.js"></script>
+    <title>Insert title here</title>
+</head>
+
+<body ng-app="blog">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-example" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="" style="color:red;">B L O G</a>
+
+
+
+            </div>
+            <div class="navbar-collapse collapse" id="collapse-example">
+
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="" ng-show="currentUser.username" style="color:blue;">WELCOME {{currentUser.username}}</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" style="color:black;"> BLOGS
+                            <b class="caret" style="color:black;"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#!/getallblogs" style="color:red;">VIEW BLOGS</li>
+                            <li>
+                                <a href="#!/post" style="color:red;" ng-show="currentUser.username">POST BLOGS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" style="color:black;" ng-show="currentUser.username"> JOB
+                            <b class="caret" style="color:black;"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#!/postjobs/" ng-show="currentUser.username=='prakash'" style="color:red;">ADD JOB
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#!/getalljobs/" ng-show="currentUser.username" style="color:red;">JOBS</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username" style="color:black;"> FRIEND
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#!/suggestedusers" style="color:red;">LIST OF SUGGESTED USERS</a>
+                            </li>
+                            <li>
+                                <a href="#!/pendingrequests" style="color:red;">PENDING REQUEST</a>
+                            </li>
+                            <li>
+                                <a href="#!/getfriends" style="color:red;">FRIENDS{{noOfFriends}}</a>
+                            </li>
+                            <li>
+                                <a></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#!/chat" ng-show="currentUser.username" style="color:black;">CHAT</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username">
+                            <span class="glyphicon glyphicon-globe" style="color:blue;">
+                                <span class="rw-number-notification" style="color:black;" ng-if="approvalStatus.length>0">{{approvalStatus.length}}</span>
+                            </span>
+                        </a>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li ng-repeat="blogPostStatus in approvalStatus">
+                                <a href="#!/approvalstatus/{{blogPostStatus.id}}">{{blogPostStatus.blogtitle}} is
+                                    <span ng-if="blogPostStatus.approved">Approved</span>
+                                    <span ng-if="!blogPostStatus.approved">Rejected</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-right">
+                    <li>
+                        <a href="" ng-show="currentUser.username">
+                            <img src="http://localhost:8085/Backendproject/resources/images/{{currentUser.username}}.jpg" alt="upload Picture" width="40px"
+                                height="40px" class="img-rounded">
+                        </a>
+                    </li>
+
+
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" ng-show="currentUser.username" data-toggle="dropdown" style="color:black;">
+                            <span class="glyphicon glyphicon-user"></span> User
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="#!/edituser"> Edit Profile</a>
+                            </li>
+                            <li>
+                                <a href="#!/profilepic"> Edit ProfilePicture</a>
+                            </li>
+                            <li>
+                                <a href="" ng-click="logout()">Logout</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="right">
+        <div class="item ">
+            <span class="glyphicon glyphicon-th-large "> </span>
+        </div>
+        <div class="item active ">
+            <a href="#!/home ">
+                <span class="glyphicon glyphicon-home "></span>HOME </a>
+        </div>
+        <div class="item ">
+            <a href="#!/login " ng-hide="currentUser.username">
+                <span class="glyphicon glyphicon-log-in "></span>LOGIN </a>
+        </div>
+        <div class="item ">
+            <a href="#!/register " ng-hide="currentUser.username">
+                <span class="glyphicon glyphicon-user"></span>REGISTER</a>
+
+        </div>
+
+
+    </div>
+    <div class="left">
+        <div class="item ">
+            <span class="glyphicon glyphicon-th-large "> </span>
+        </div>
+        <div class="item active ">
+            <a href=>
+                <span class=" glyphicon glyphicon-book"></span> ABOUT US </a>
+        </div>
+        <div class="item ">
+            <a href="#!/contactus">
+                <span class=" glyphicon glyphicon-phone "></span> CONTACT </a>
+        </div>
+
+
+
+    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+
+    </nav>
+    <div class="mainContent">
+
+        <div ng-view> </div>
+    </div>
+
+
+
+</body>
+
+
+
+</html>

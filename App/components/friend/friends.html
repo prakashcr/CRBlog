@@ -1,0 +1,75 @@
+
+<style>
+    .breadcrumb>li+li:before {
+        color: #CCCCCC;
+        content: "// ";
+        padding: 0 5px;
+    }
+</style>
+
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+<ol class="breadcrumb">
+    <li class="active"><a href="" ng-click="frndCtrl.myFrnds()">Friends</a></li>
+    <li><a href="" ng-click="frndCtrl.frndRequests()">Requests</a></li>
+    <li><a href="" ng-click="frndCtrl.getUsers()">Search Friends</a></li>
+</ol>
+</br>
+<div>
+    <div class="col-sm-7"></div>
+    <div class="col-sm-3"><input class="form-control" type="text" ng-model="search" placeholder="Search"></div>
+</div>
+<br>
+<br>
+<div ng-if="frndCtrl.myFriends != null" ng-repeat="frnds in frndCtrl.myFriends | filter : search">
+    <div class="thumbnail row" ng-if="frnds.status == 'accepted'">
+        <div class="col-sm-4">
+            <img src="{{frndCtrl.imgPath}}/{{frnds.frndId}}.jpg" alt="{{frnds.name}}" class="img-circle" height="50" width="50">
+        </div>
+        <div class="col-sm-5">
+            <h3>{{frnds.username}}</h3>
+        </div>
+    </div>
+</div>
+
+<div ng-if="frndCtrl.friends != null" ng-repeat="frnds in frndCtrl.friends | filter : search ">
+    <div class="thumbnail row" ng-if="frnds.status == 'requested'">
+        <div class="col-sm-5">
+            <img src="{{frndCtrl.imgPath}}/{{frnds.frndId}}.jpg" alt="{{frnds.username}}" class="img-circle" height="50" width="50">
+        </div>
+        <div class="col-sm-4">
+            <h3>{{frnds.username}}</h3>
+        </div>
+        <div class="col-sm-3">
+            <i><a href="" 
+        ng-click="frndCtrl.accept(frnds.id)" class = "btn btn-default">Accept</a></i>
+        </div>
+    </div>
+</div>
+<div ng-if="frndCtrl.users != null">
+
+    <div ng-repeat="user in frndCtrl.users | filter : search">
+        
+        <div class = "img-thumbnail" style="width:65%;left:80px;">
+            <div class="row">
+               <!-- <div class="col-md-4">
+                    <img src="{{frndCtrl.imgPath}}{{user.id}}.jpg" onerror="this.src='http://localhost:8084/uritsolution/resources/images/default.png';" alt="{{user.name}}" class = "img-rounded" style="height:120px;width:120px;">
+                </div>-->
+                <div class="col-md-6">
+                    <a href=""><h4>{{user.username}}</h4></a>
+                    <p>{{user.mobilenumber}}</p>
+                    <p>{{user.email}}</p>
+                </div>
+                <div class="col-md-2">
+                    <br><br>
+                    <a class="btn btn-primary" href="" ng-click="frndCtrl.sendRequest(user)"><span class = "glyphicon glyphicon-user"></span></a>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="chat.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-6 col-xs-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-chat"></span>CHAT
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label for="to">Send To</label>
+            <select class="form-control" id="to" name="to" ng-model="ChatCtrl.to">
+              <option value="">Select Recipient</option>
+              <option value="all">All Users</option>
+              <option ng-repeat="" value="{{}}">{{capitalize()}}</option>
+            </select>
+          </div>
+          <br>
+          <div class="panel-body msg_container_base">
+            <div class="row msg_container base_sent">
+              <div ng-repeat="message in ChatCtrl.messages | orderBy:'time':true" class="message">
+                <div class="col-sm-6">
+
+                  <span ng-class="{self: message.self}">{{message.userId}} --> {{message.message}}</span>
+
+                </div>
+              </div>
+              <div class="row msg_container base_receive">
+                <div class="col-md-2 col-xs-2 avatar">
+                  <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                </div>
+
+              </div>
+            </div>
+            <div class="panel-footer">
+              <div class="input-group">
+                <input id="btn-input" type="text" ng-model="ChatCtrl.message" class="form-control input-sm chat_input" placeholder="Write your message here..."
+                />
+                <span class="input-group-btn">
+                  <button class="btn btn-primary btn-sm" ng-click="ChatCtrl.addMessage()" id="btn-chat">
+                    <i class="fa fa-send fa-1x" aria-hidden="true"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

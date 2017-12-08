@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="register.css"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="row ">
+            <div class="col-xs-4 col-xs-offset-4">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">PLEASE SIGN UP
+                            <small style="color:red;">It's free!</small>
+                        </h3>
+                    </div>
+                    <br>
+                    <form>
+                        <div class="panel-body">
+
+
+                            <div class="row">
+                                <div class="col-xs-6 col-xs-6 col-xs-6">
+
+                                    <div class="form-group">
+                                        <input type="text" name="first_name" id="first_name" ng-model="user.firstname" class="form-control input-sm" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-xs-6 col-xs-6">
+
+                                    <div class="form-group">
+                                        <input type="text" name="last_name" id="last_name" ng-model="user.lastname" class="form-control input-sm" placeholder="Last Name">
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <input type="text" name="username" ng-model="user.username" class="form-control input-sm" placeholder="User Name">
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" ng-model="user.emailId" class="form-control input-sm" placeholder="Email Address">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-xs-6 col-xs-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" ng-model="user.password" class="form-control input-sm" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-xs-6 col-xs-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Role</label>
+                                <div class="col-xs-6">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="role" ng-model="user.role" value="Student">Student
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="role" ng-model="user.role" value="Employee">Employee
+                                            </label>
+                                        </div>
+                                        
+                                            <label class="radio-inline">
+                                                <input type="radio" name="role" ng-model="user.role" value="Alumini"> Alumini
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input type="submit" value="Register" class="btn btn-info btn-block" ng-click="register()">
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

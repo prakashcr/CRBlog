@@ -1,0 +1,38 @@
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="table-responsive">
+            <h2> List Of Friends </h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Profile Picture</th>
+                        <th>User Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="f in friendsList">
+
+                        <td ng-hide="currentUser.username==f.fromUser">
+                            <img alt="Image Not Available" src="http://localhost:8085/Backendproject/resources/images/{{f.fromUser}}.jpg" width="50px" height="50px" class="img-circle">
+                        </td>
+                        <td ng-hide="currentUser.username==f.toUser">
+                            <img alt="Image Not Available" src="http://localhost:8085/Backendproject/resources/images/{{f.toUser}}.jpg" width="50px" height="50px" class="img-circle">
+                        </td>
+
+                        <td ng-hide="currentUser.username==f.fromUser" >{{f.fromUser}}</td>
+                        <td ng-hide="currentUser.username==f.toUser">{{f.toUser}}</td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

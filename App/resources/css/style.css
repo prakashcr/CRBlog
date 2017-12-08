@@ -1,0 +1,82 @@
+.left{
+    float: right;
+    height: 100vh;
+}
+.right{
+    float: left;
+    height: 100vh;
+}
+.left{
+    background:black;
+    display: inline-block;
+    white-space: nowrap;
+    width: 50px;
+    transition:width 1s;
+    padding-top: 40px;
+    padding-right: 5px; 
+    padding-bottom:-0.2px; 
+}
+.right{
+    background:black;
+    display: inline-block;
+    white-space: nowrap;
+    width: 50px;
+    transition:width 1s;
+    padding-top: 40px;
+    padding-right: 5px; 
+    padding-bottom:0px;
+}
+
+.left:hover{
+    width: 150px;
+}
+.right:hover{
+    width: 150px;
+}
+.item:hover{
+    background-color: whitesmoke;
+}
+.left .glyphicon{
+    margin:15px;
+    width: 10px;
+}
+.right .glyphicon{
+    margin:15px;
+    width: 10px;
+}
+
+.item{
+    height: 50px;
+    overflow: hidden;
+
+}
+.footer{
+    width:80px;
+    height:80px;
+    text-align: center;
+    padding-top: 150px;
+    background-color: grey
+}
+a{
+    display:block;
+    padding: 5px;
+}
+.mainContent{
+    background: url('');
+    background-size: cover;
+    padding: 0px;
+    margin: 0px;
+text-align: center;
+padding-right: 10px;
+padding-top: 150px;
+}
+.navbar-default
+{
+    background:whitesmoke;
+    
+}
+.navbar-inverse
+{
+    background:whitesmoke;
+    padding-bottom: 5px;
+}

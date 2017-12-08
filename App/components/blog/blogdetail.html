@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="blogdetail.css"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="container">
+        <div id="blog" class="row">
+
+
+            <div class="col-md-10 blogShort">
+                <strong style: "color:red;">
+                    <h4 style="color:red;">
+                        </style>BLOG:</h4>
+                </strong>
+                <h4>{{blogPost.blogtitle}}</h4>
+                <article>
+                    <strong style="color:red;">DESCRIPTION: </strong>
+                    <h4>
+                        <p>
+                            {{blogPost.description}}
+                        </p>
+                    </h4>
+                </article>
+                <span>
+                    <strong style="color:red;">CREATED BY: </strong>{{blogPost.postedBy.username}}</span>
+                <br>
+                <span>
+                    <strong style="color:red;">CREATED ON: </strong>{{blogPost.postedOn | date:'medium'}}</span>
+                <ul>
+                    <b style="color:red;">COMMENTS:</b>
+                    <li ng-repeat="blogComment in blogComments | orderBy:'time':'true'">
+                        {{blogComment.commentText}}
+                        <br>
+
+                        <span>By:
+                            <strong style="color:black;">{{blogComment.commentedBy.username}}</strong>
+                        </span>
+                        <span>On:
+                            <strong style="color:black;">{{blogComment.commentedOn | date:'yyyy/MM/dd'}}</strong>
+                        </span>
+                    </li>
+                </ul>
+
+
+
+                <form>
+                    <div class="form-group">
+                        <textarea rows="4" cols="30" ng-model="blogComment.commentText"></textarea>
+                    </div>
+                    <button class="btn btn-primary" value="Post Comment" ng-click="addComment()">Post Comment</button>
+                </form>
+
+            </div>
+
+        </div>
+</body>
+
+</html>

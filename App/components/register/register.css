@@ -1,0 +1,12 @@
+body{
+    background-color:white;
+}
+.centered-form{
+    margin-top: 20px;
+    
+}
+
+.centered-form .panel{
+	background: white;
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}

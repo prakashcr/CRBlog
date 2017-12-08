@@ -1,0 +1,34 @@
+
+
+<div class="container">
+    <div class="table-responsive" ng-show="currentUser.role=='Admin'">
+        <h4 style="color:blue;">LIST OF BLOGS WAITING FOR APPROVAL</h4>
+        <br>
+        <table class="table">
+            <th>Recent Posts</th>
+            <tr ng-repeat="blogPost in blogPostWaitingForApproval | orderBy:'time':true">
+
+                <td>
+                    <a href="#!/blogpostforapproval/{{blogPost.id}}" style="color:red;">{{blogPost.blogtitle}}</a>
+                </td>
+                <td style="color:black;">CreatedBy: {{blogPost.postedBy.username}}</td>
+                <td style="color:black;">Created On: {{blogPost.postedOn | date:'MM/dd/yyyy HH:mm'}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="table-responsive">
+        <h4 style="color:blue;">LIST OF BLOGS POSTED BY USER</h4>
+        <br>
+        <table class="table">
+            <th>Recent Posts</th>
+            <tr ng-repeat="blogPost in blogPostApproved | orderBy:'time':true">
+
+                <td>
+                    <a href="#!/blogdetail/{{blogPost.id}}" ng-click="getBlogComments(blogPost.id)" style="color:green;">{{blogPost.blogtitle}}</a>
+                </td>
+                <td style="color:black;">CreatedBy: {{blogPost.postedBy.username}}</td>
+                <td style="color:black;">Created On: {{blogPost.postedOn | date:'MM/dd/yyyy HH:mm'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
